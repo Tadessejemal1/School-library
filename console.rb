@@ -10,3 +10,4 @@ capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
 capitalized_trimmed_person.correct_name
 
 puts capitalized_trimmed_person.correct_name
+puts capitalized_person.correct_name
