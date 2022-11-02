@@ -1,12 +1,19 @@
 require_relative './person'
 
 class Student < Person
-  def intialize(classroom, age, name = 'unknown', parent_permission: true)
+  attr_reader :classroom
+
+  def initialize(classroom, age, name = 'Unknown', parent_permission: true)
     super(age, name, parent_permission)
     @classroom = classroom
   end
 
   def play_hooky
-    '¯(ツ)/¯'
+    '¯\(ツ)/¯'
+  end
+
+  def classroom=(classroom)
+    @classroom = classroom
+    classroom.students.push(self) unless classroom.students.includes?(self)
   end
 end
