@@ -16,7 +16,7 @@ cd into the directory and run bundle install to install dependencies
 
 ## Credits
 
-## Authors
+## Author
 
 ## 👤 Tadesse Jemal.
 
