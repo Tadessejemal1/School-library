@@ -26,7 +26,7 @@ class App
              end
     @people << person
   end
-  
+
   ## Create a book.
   def create_book(title, author)
     @books << Book.new(title, author)
@@ -42,11 +42,11 @@ class App
     @books.each { |book| puts "[#{book.class}] Title: \"#{book.title}\", Author: #{book.author}" }
   end
 
- ## Create a rental.
+  ## Create a rental.
   def create_rental(book, person, date)
     @rentals.push(Rental.new(book, person, date))
   end
-  
+
   ## List all rentals for a given person id.
   def list_rentals_by_person(person_id)
     @rentals.each do |rental|

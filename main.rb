@@ -12,7 +12,7 @@ def selected_option_number
     'list all rentals for a give person id',
     'exit'
   ]
-  puts ''
+  puts
   puts 'Please choose an option by entering a number: '
   options.each_with_index do |option, index|
     puts "#{index + 1} - #{option.capitalize}"
@@ -20,30 +20,25 @@ def selected_option_number
   gets.chomp.to_i
 end
 
-def create_a_person(app)
-    print 'Do you want to create a student (1) or a teacher (2)? [input the number]: '
-    selected = gets.chomp
-    selected = selected.to_i
-    print 'Name: '
-    name = gets.chomp
-    print 'Age: '
-    age = gets.chomp
-    age = age.to_i
-    print 'Has parent permission? [Y/N]: ' if selected == 1
-    permission = gets.chomp if selected == 1
-    permission = true if %w[y Y].include?(permission)
-    permission = false if %w[n N].include?(permission)
-  
-    print 'Specialization: ' if selected == 2
-    speciality = gets.chomp if selected == 2
-  
-    @people.push(Student.new(age, name, parent_permission: permission)) if selected == 1
-    @people.push(Teacher.new(age, speciality, name)) if selected == 2
-  
-    puts 'Person created succesfully!'
+def add_person(app)
+  puts 'Do you want to register a student (1) or a teacher (2)? [1 - student, 2 - teacher]'
+  role = gets.chomp.to_i
+  print 'Name: '
+  name = gets.chomp
+  print 'Age: '
+  age = gets.chomp.to_i
+  if role == 1
+    print 'Has parent permission? [Y|N]: '
+    parent_permission = gets.chomp
+  else
+    print 'Specialization: '
+    specialization = gets.chomp
+  end
+  app.register_person(role, name, age, parent_permission || specialization)
+  puts 'Person successfully registered!'
 end
 
-def create_new_book(app)
+def add_new_book(app)
   print 'Title: '
   title = gets.chomp
   print 'Author: '
@@ -79,8 +74,8 @@ def case_when(app, selected_option)
   case selected_option
   when 1 then app.show_books
   when 2 then app.show_people
-  when 3 then create_a_person(app)
-  when 4 then create_new_book(app)
+  when 3 then add_person(app)
+  when 4 then add_new_book(app)
   when 5 then register_new_rental(app)
   when 6 then display_rentals_by_person(app)
   else
