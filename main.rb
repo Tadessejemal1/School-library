@@ -26,7 +26,7 @@ def add_person(app)
   print 'Name: '
   name = gets.chomp
   print 'Age: '
-  age = gets.chomp.to_i
+  age = gets.chomp
   if role == 1
     print 'Has parent permission? [Y|N]: '
     parent_permission = gets.chomp
