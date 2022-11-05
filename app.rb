@@ -1,3 +1,4 @@
+require 'pry'
 require_relative './book'
 require_relative './person'
 require_relative './student'
@@ -8,7 +9,7 @@ require_relative './trim_name_decorator'
 
 class App
   attr_reader :books, :people
-
+  binding.pry
   def initialize()
     @books = []
     @people = []
