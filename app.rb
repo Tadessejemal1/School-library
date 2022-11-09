@@ -8,9 +8,9 @@ require_relative './trim_name_decorator'
 require_relative './preserve_data'
 
 class App
-
   include PreserveData
   attr_reader :books, :people, :rentals
+
   def initialize
     @people = fetch_people
     @books = fetch_books
@@ -18,11 +18,11 @@ class App
   end
 
   ## Create a person (teacher or student, not a plain Person).
-  def register_person(role, id, name, age, specialization = '', parent_permission = '')
+  def register_person(role, name, age, specialization = '', parent_permission = '')
     puts 'method called'
     parent_permission = parent_permission.downcase == 'y'
     person = if role == 1
-               Student.new(id: Random.rand(1..1000), age: age.to_i, name: name, parent_permission: parent_permission) 
+               Student.new(id: Random.rand(1..1000), age: age.to_i, name: name, parent_permission: parent_permission)
              else
                Teacher.new(id: Random.rand(1..1000), specialization: specialization, age: age.to_i, name: name)
              end
@@ -52,9 +52,7 @@ class App
   ## List all rentals for a given person id.
   def list_rentals_by_person(person_id)
     @rentals.each do |rental|
-      if rental.person == person_id
-        puts "Date: #{rental.date} Book \"#{rental.book.title}\" by #{rental.book.author}"
-      end
+      puts "Date: #{rental.date} Book \"#{rental.book.title}\" by #{rental.book.author}" if rental.person == person_id
     end
   end
 end

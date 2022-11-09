@@ -2,7 +2,7 @@ require 'json'
 
 module PreserveData
   def create_file(path)
-    Dir.mkdir('data') unless Dir.exist?('data')
+    FileUtils.mkdir_p('data')
 
     File.open(path, 'w') do |file|
       file.puts JSON.generate([])
