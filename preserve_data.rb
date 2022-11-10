@@ -22,7 +22,7 @@ module PreserveData
   end
 
   def fetch_people
-    path = 'person.json'
+    path = 'json/person.json'
 
     if file_exist?(path)
       fetch_data(path).map do |person|
@@ -42,7 +42,7 @@ module PreserveData
   end
 
   def fetch_books
-    path = 'book.json'
+    path = 'json/book.json'
 
     if file_exist?(path)
       fetch_data(path).map do |book|
@@ -55,7 +55,7 @@ module PreserveData
   end
 
   def fetch_rentals
-    path = 'rental.json'
+    path = 'json/rental.json'
 
     if file_exist?(path)
       fetch_data(path).map do |rental|
@@ -72,7 +72,7 @@ module PreserveData
   end
 
   def save_person(person)
-    path = 'person.json'
+    path = 'json/person.json'
     data = fetch_data(path)
 
     if person.instance_of?(Teacher)
@@ -87,7 +87,7 @@ module PreserveData
   end
 
   def save_book(book)
-    path = 'book.json'
+    path = 'json/book.json'
     data = fetch_data(path)
 
     data.push({ title: book.title, author: book.author })
@@ -95,7 +95,7 @@ module PreserveData
   end
 
   def save_rental(rental)
-    path = 'rental.json'
+    path = 'json/rental.json'
     data = fetch_data(path)
 
     data.push({ date: rental.date, id: rental.person.id, title: rental.book.title })

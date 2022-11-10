@@ -51,8 +51,11 @@ class App
 
   ## List all rentals for a given person id.
   def list_rentals_by_person(person_id)
-    @rentals.each do |rental|
-      puts "Date: #{rental.date} Book \"#{rental.book.title}\" by #{rental.book.author}" if rental.person == person_id
+    rentals.each do |rental|
+      if rental.person.id == person_id
+        puts "[#{rental.person.class}] Name: #{rental.person.name}
+        | Date: #{rental.date} | Book: \"#{rental.book.title}\" by #{rental.book.author}"
+      end
     end
   end
 end
