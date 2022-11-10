@@ -1,5 +1,5 @@
 # school-library
-In this project, start building the school library app. In this initial step, I implemented the classes to represent students and teachers.
+In this project, start building the school library app add Person, Student and Teacher classes.In this initial step, I implemented the classes to represent students and teachers.
 ## Live Version
 
 ## Built With
