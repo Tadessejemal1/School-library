@@ -20,7 +20,7 @@ cd into the directory and run bundle install to install dependencies
 
 ## 👤 Tadesse Jemal.
 
-   - GitHub: [@Tadessejemal1(https://github.com/Tadessejemal1)]
+   - GitHub: [@Tadessejemal1](https://github.com/Tadessejemal1)
    - Twitter: [@twitterhandle](https://twitter.com/tadesse)
    - LinkedIn: [@tadesse-jemal](https://linkedin.com/in/tadesse-jemal)
 
