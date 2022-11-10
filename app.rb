@@ -5,24 +5,26 @@ require_relative './teacher'
 require_relative './rental'
 require_relative './capitalize_name_decorator'
 require_relative './trim_name_decorator'
+require_relative './preserve_data'
 
 class App
-  attr_reader :books, :people
+  include PreserveData
+  attr_reader :books, :people, :rentals
 
-  def initialize()
-    @books = []
-    @people = []
-    @rentals = []
+  def initialize
+    @people = fetch_people
+    @books = fetch_books
+    @rentals = fetch_rentals
   end
 
   ## Create a person (teacher or student, not a plain Person).
   def register_person(role, name, age, specialization = '', parent_permission = '')
     puts 'method called'
-    is_permitted = parent_permission.downcase == 'y'
+    parent_permission = parent_permission.downcase == 'y'
     person = if role == 1
-               Student.new('104', age, name, parent_permission: is_permitted)
+               Student.new(id: Random.rand(1..1000), age: age.to_i, name: name, parent_permission: parent_permission)
              else
-               Teacher.new(specialization, age, name)
+               Teacher.new(id: Random.rand(1..1000), specialization: specialization, age: age.to_i, name: name)
              end
     @people << person
   end
@@ -49,9 +51,10 @@ class App
 
   ## List all rentals for a given person id.
   def list_rentals_by_person(person_id)
-    @rentals.each do |rental|
+    rentals.each do |rental|
       if rental.person.id == person_id
-        puts "Date: #{rental.date} Book \"#{rental.book.title}\" by #{rental.book.author}"
+        puts "[#{rental.person.class}] Name: #{rental.person.name}
+        | Date: #{rental.date} | Book: \"#{rental.book.title}\" by #{rental.book.author}"
       end
     end
   end
